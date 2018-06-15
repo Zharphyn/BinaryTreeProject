@@ -1,41 +1,47 @@
 #pragma once
 
+using namespace std;
+
 template<typename T>
 class TreeNode {
 public:
 
 	TreeNode();
-	TreeNode(T data);
+	TreeNode(shared_ptr<T> data);
 	~TreeNode();
 
+private:
+	shared_ptr<T> mData; // the data in the node
+	shared_ptr<TreeNode> mLeft; // pointer to the left item in the node
+	shared_ptr<TreeNode> mRight; // pointer to the right item in the node
+	weak_ptr<TreeNode> parent;
 
-	T mData; // the data in the node
-	TreeNode<T>* mLeft;	// pointer to the left item in the node
-	TreeNode<T>* mRight;   // pointer to the right item in the node
 
+};
 
 	template<typename T>
 	TreeNode<T>::TreeNode()
 	{
 		mData = 0;
-		mLeft = nullptr;
-		mRight = nullptr;
+		leftPtr = nullptr;
+		rightPtr = nullptr;
+		parent = nullptr;
 	}
 
 
 	template<typename T>
-	TreeNode<T>::TreeNode(T data)
+	TreeNode<T>::TreeNode(shared_ptr<T> data)
 	{
 		mData = data;
-		mLeft = nullptr;
-		mRight = nullptr;
+		leftPtr = nullptr;
+		rightPtr = nullptr;
+		parent = nullptr;
 	}
 
 	template<typename T>
 	TreeNode<T>::~TreeNode()
 	{
-		mLeft = nullptr;
-		mRight = nullptr;
+		leftPtr = nullptr;
+		rightPtr = nullptr;
+		parent = nullptr;
 	}
-
-};
