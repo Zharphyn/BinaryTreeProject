@@ -10,38 +10,39 @@ public:
 	TreeNode(shared_ptr<T> data);
 	~TreeNode();
 
-private:
+public:
 	shared_ptr<T> mData; // the data in the node
 	shared_ptr<TreeNode> mLeft; // pointer to the left item in the node
 	shared_ptr<TreeNode> mRight; // pointer to the right item in the node
-	weak_ptr<TreeNode> parent;
+	shared_ptr<TreeNode> parent; // pointer to the node parent
 
 
 };
-
+	// default constructor
 	template<typename T>
 	TreeNode<T>::TreeNode()
 	{
 		mData = 0;
-		leftPtr = nullptr;
-		rightPtr = nullptr;
+		mLeft = nullptr;
+		mRight = nullptr;
 		parent = nullptr;
 	}
 
-
+	// constructor
 	template<typename T>
 	TreeNode<T>::TreeNode(shared_ptr<T> data)
 	{
 		mData = data;
-		leftPtr = nullptr;
-		rightPtr = nullptr;
+		mLeft = nullptr;
+		mRight = nullptr;
 		parent = nullptr;
 	}
 
+	// destructor
 	template<typename T>
 	TreeNode<T>::~TreeNode()
 	{
-		leftPtr = nullptr;
-		rightPtr = nullptr;
+		mLeft = nullptr;
+		mRight = nullptr;
 		parent = nullptr;
 	}
